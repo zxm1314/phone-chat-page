@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style lang="">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width: 400px;
+            margin:0 auto;
+        }
+        .content{
+            height: 527px;
+            width: 330px;
+            position:relative;
+            bottom: 710px;
+            left:35px;
+            overflow: auto;
+        }
+     .bottom {
+            height: 60px;
+            width: 330px;
+            border-top:1px solid #808080;
+            position:relative;
+            bottom: 710px;
+            left:35px;
+            overflow: hidden;
+        }
+       .bottom  .imgBox{
+            width:40px;
+            height: 35px;
+            border:1px solid #808080;
+            float:left;
+            border-radius:10px;
+            margin: 10px 10px 0px 10px;
+        }
+        .txt{
+            height: 35px;
+            width: 170px;
+            font-size:20px;
+            margin-top:10px;
+            float:left;
+            border:1px solid #808080;
+            border-radius:10px;
+            outline: none;
+
+        }
+        .fashong{
+            display: line-block;
+            font-size:25px;
+            color:#95939A;
+            float:left;
+            margin: 15px 0px 0px 10px;
+            font-weight: 800;
+            
+        }
+        .conD,.conD2{
+           margin-top:5px;
+        }
+        .conD{
+            float:left;
+        }
+        .conD2{
+            float:right;
+        }
+        #conSpan,#conSpan2{
+          display:inline-block;
+          padding:5px 5px 5px 5px; 
+          width: 170px;
+          font-size: 20px;
+            
+        }
+        #conSpan{
+             background-color: lightblue;
+        }
+        #conSpan2{
+            background-color: lightpink;
+        }
+        .spanImg{
+            float: left;
+        }
+        .spanImg2{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+   <div class="box">
+       <img src="phone.png">
+       <div class="content" id="content">      
+       </div>
+            <div class="bottom">
+               <div class="imgBox" id="imgBox">
+                   <img src="file:///C:/Users/zhao/Desktop/js/ku.png" width="40px" id ="Bimg">
+               </div>
+                <input type="text" class="txt" id="txt">
+                <span class="fashong" id="fashong">发送</span>
+           </div>
+   </div>
+</body>
+<script>
+    // 点击发送时吧txt里面的值添加content里面
+    var cntnt = document.getElementById("content");
+    var fs = document.getElementById("fashong");
+    var txt = document.getElementById("txt");
+    var imgBox = document.getElementById("imgBox");
+    var Bimg = document.getElementById("Bimg");
+    var ku ="file:///C:/Users/zhao/Desktop/js/ku.png";
+    var ku2 ="file:///C:/Users/zhao/Desktop/js/ku2.png";
+    var kuContent =[];
+
+     imgBox.onclick = function () { 
+     if (Bimg.src==ku){
+         Bimg.src=ku2;
+     }else{
+         Bimg.src=ku;
+     }}
+    fs.onclick = function () {
+     if (Bimg.src==ku) {
+        nr("ku说:",ku,"conSpan","spanImg","conD");
+      }else if(Bimg.src==ku2){
+        nr("ku2说:",ku2,"conSpan2","spanImg2","conD2")  ;
+      }
+     }  
+     window.onkeydown = function (event) {
+      if (event.keyCode == 13){
+        if (Bimg.src==ku) {
+        nr("ku说:",ku,"conSpan","spanImg","conD");
+      }else if(Bimg.src==ku2){
+        nr("ku2说:",ku2,"conSpan2","spanImg2","conD2")  ;
+      } 
+      }
+  }  
+  function nr(users,I,cku,Class,dC) {
+         var a =  txt.value;  
+         kuContent.unshift("<div class="+dC+"><img class="+Class+" src="+I+"><span id="+cku+">"+users+a+"</span></div>");
+         cntnt.innerHTML = kuContent.join("");
+         txt.value="";
+  }
+        
+      
+</script>
+</html>
